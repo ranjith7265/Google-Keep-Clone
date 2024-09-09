@@ -1,64 +1,118 @@
 /* ====== Global Reset =====  */
-*{
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
-button{
+button {
   all: unset;
+}
+ul,
+ol,
+li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* ======= root variables ======= */
+:root {
+  --color-light-pink: #f1f3f4;
+  --color-light-yellow: rgb(254, 239, 195);
+  --text-light-grey: #ccc;
+  --text-grey: #5f6368;
 }
 
 /* ======== Nav-bar section starts ======  */
-.nav-bar{
+.nav-bar {
   height: 11vh;
   display: flex;
   align-items: center;
   border-bottom: 1px solid #ccc;
 }
-.nav-menu{
-  margin: 0rem 1rem ;
+.nav-menu {
+  margin: 0rem 1rem;
 }
-.nav-logo{
+.nav-logo {
   margin-right: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.nav-logo span{
-  font-size: 1.3rem;
-  color: #5f6368;
+.nav-logo span {
+  font-size: 1.4rem;
+  color: var(--text-grey);
+  margin-left: 0.5rem;
   font-weight: 500;
 }
 
-.nav-search{
+.nav-search {
   margin-left: 3rem;
   flex: 2;
-  background-color: #f1f3f4;
+  background-color: var(--color-light-pink);
   padding-left: 0.5rem;
   border-radius: 8px;
   display: flex;
-  box-shadow: 1px 1px 3px #ccc;
+  box-shadow: 1px 1px 2px #ccc;
   align-items: center;
   flex-wrap: nowrap;
 }
 
-.search-input{
+.search-input {
   padding: 0.8rem;
-    background-color: #f1f3f4;
+  background-color: var(--color-light-pink);
   width: 100%;
   height: 100%;
   border: none;
   outline: none;
 }
 
-.nav-option{
+.nav-option {
   flex: 1;
   display: flex;
   align-items: center;
   justify-content: flex-end;
   margin-right: 2rem;
 }
-.nav-option button{
+.nav-option button {
   margin-left: 1rem;
 }
 /* ======== Nav-bar section ends ======  */
+
+/* ======== Main section starts ======  */
+.hero-container {
+  height: 89vh;
+  width: 100vw;
+  display: flex;
+}
+/* === SideMenu section starts ===  */
+.side-menu {
+  width: 20vw;
+  background-color: #fff;
+  height: 100%;
+}
+.side-menu-links {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  padding-right: 0.2rem;
+}
+.side-menu-link {
+  padding: 0.7rem;
+  border-top-right-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+}
+.side-menu-link:hover {
+  background-color: var(--color-light-pink);
+}
+.side-menu-link img {
+  margin-left: 1rem;
+}
+.side-menu-link span {
+  font-size: 0.86rem;
+  margin-left: 1rem;
+  font-weight: 500;
+}
+/* === SideMenu section ends ===  */
+
+/* ======== Main section ends ======  */
