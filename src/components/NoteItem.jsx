@@ -34,7 +34,7 @@ function NoteItem({ note }) {
       }}
     >
       <img
-        class="card-img-top"
+        className="card-img-top"
         src={file}
         style={{ display: `${file ? "block" : "none"}` }}
       ></img>
@@ -59,7 +59,7 @@ function NoteItem({ note }) {
           style={{ display: "none" }}
           onChange={handleFileUpload}
         />
-        <label htmlFor={note.id}>
+        <label htmlFor={note.id} style={{ cursor: "pointer" }}>
           <CiImageOn />
         </label>
       </span>
@@ -78,7 +78,7 @@ function NoteItem({ note }) {
             dispatch(updateCardColor({ id: note.id, color: e.target.value }))
           }
         />
-        <label htmlFor={note.id}>
+        <label htmlFor={note.id} style={{ cursor: "pointer" }}>
           <MdOutlineColorLens />
         </label>
       </span>

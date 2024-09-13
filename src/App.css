@@ -57,7 +57,6 @@ body {
   position: absolute;
   right: 70px;
   bottom: 9px;
-  cursor: pointer;
 }
 .delete-icon {
   display: none;
@@ -78,7 +77,6 @@ body {
   position: absolute;
   right: 98px;
   bottom: 9px;
-  cursor: pointer;
 }
 
 .note-list:hover .image-upload{
