@@ -79,11 +79,12 @@ function Trash() {
             </div>
             <span
               className="delete-icon"
+              style={{ display: "block" }}
               onClick={() => handleDeleteForever(note.id)}
             >
               <MdDeleteForever style={{ fontSize: 18 }} />
             </span>
-            <span className="archive-icon">
+            <span className="archive-icon" style={{ display: "block" }}>
               <MdRestoreFromTrash
                 style={{ fontSize: 18 }}
                 onClick={() => handleRestore(note)}

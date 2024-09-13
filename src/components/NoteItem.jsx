@@ -55,11 +55,11 @@ function NoteItem({ note }) {
       <span className="image-upload">
         <input
           type="file"
-          id={note.id}
+          id={note.title}
           style={{ display: "none" }}
           onChange={handleFileUpload}
         />
-        <label htmlFor={note.id} style={{ cursor: "pointer" }}>
+        <label htmlFor={note.title} style={{ cursor: "pointer" }}>
           <CiImageOn />
         </label>
       </span>
@@ -71,8 +71,6 @@ function NoteItem({ note }) {
           style={{
             visibility: "hidden",
             position: "absolute",
-            top: 10,
-            right: -40,
           }}
           onChange={(e) =>
             dispatch(updateCardColor({ id: note.id, color: e.target.value }))
