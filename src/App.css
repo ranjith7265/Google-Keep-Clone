@@ -52,17 +52,47 @@ body {
   top: 5px;
   cursor: pointer;
 }
+.card-color-pick{
+  display: none;
+  position: absolute;
+  right: 70px;
+  bottom: 9px;
+  cursor: pointer;
+}
 .delete-icon {
+  display: none;
   position: absolute;
   right: 15px;
   bottom: 9px;
   cursor: pointer;
 }
 .archive-icon {
+  display: none;
   position: absolute;
   right: 45px;
   bottom: 9px;
   cursor: pointer;
+}
+.image-upload{
+  display: none;
+  position: absolute;
+  right: 98px;
+  bottom: 9px;
+  cursor: pointer;
+}
+
+.note-list:hover .image-upload{
+  display: block;
+  
+}
+.note-list:hover .delete-icon{
+  display: block;
+}
+.note-list:hover .archive-icon{
+  display: block;
+}
+.note-list:hover .card-color-pick{
+  display: block;
 }
 
 .dark-theme {
@@ -150,6 +180,7 @@ body {
 .side-menu {
   width: 25vw;
   height: 100%;
+  transition: width 0.3s ease;
 }
 .menu-hide {
   width: 4.9vw;

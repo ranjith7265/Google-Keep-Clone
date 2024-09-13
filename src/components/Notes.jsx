@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+
 import TakeNote from "./TakeNote";
 import NoteList from "./NoteList";
 import { useSelector } from "react-redux";
@@ -18,7 +18,6 @@ function Notes({ searchValue }) {
       }
     }
   });
-  console.log(searchFiltered.length)
   if (searchValue.trim().length > 0) {
     return (
       <section

@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, current } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
 
 const initialState = {
@@ -20,6 +20,7 @@ const keepSlice = createSlice({
         note: note,
         isArchive: false,
         isPinned: false,
+        color: ""
       });
     },
     removeNote: (state, action) => {
@@ -54,6 +55,23 @@ const keepSlice = createSlice({
     toggleTheme: (state) => {
       state.theme = !state.theme;
     },
+    updateDrag: (state, action) => {
+      // const updateArray = action.payload
+      // const newArray = updateArray.filter(
+      //   (note) =>
+      //     !state.notes.some((existingItem) => existingItem.id === note.id)
+      // );
+      // console.log(newArray)
+      // const pinned = state.notes((note) => note.isPinned === true)
+      state.notes = [...action.payload];
+    },
+    updateCardColor: (state, action) => {
+      state.notes = state.notes.map((note) =>
+        note.id === action.payload.id
+          ? { ...note, color: action.payload.color }
+          : note
+      );
+    },
   },
 });
 
@@ -65,6 +83,8 @@ export const {
   removeForever,
   toggleLayout,
   toggleTheme,
+  updateDrag,
+  updateCardColor
 } = keepSlice.actions;
 
 export default keepSlice.reducer;

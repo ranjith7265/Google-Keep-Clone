@@ -1,8 +1,11 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import NoteItem from "./NoteItem";
+// import { Reorder } from "framer-motion";
+// import { updateDrag } from "../store/keepSlice";
 
 function NoteList() {
+  // const dispatch = useDispatch();
   const notes = useSelector((state) => state.notes);
   const layout = useSelector((state) => state.fullLayout);
   const theme = useSelector((state) => state.theme);
@@ -55,6 +58,19 @@ function NoteList() {
             <NoteItem key={note.id} note={note} />
           ))}
         </ul>
+
+        {/* <Reorder.Group
+            axis="x"
+            values={otherNotes}
+            onReorder={e => dispatch(updateDrag(e))}
+            className="note-lists"
+          >
+            {otherNotes.map((note) => (
+              <Reorder.Item key={note.id} value={note}>
+                <NoteItem key={note.id} note={note} />
+              </Reorder.Item>
+            ))}
+          </Reorder.Group> */}
       </div>
     );
   }

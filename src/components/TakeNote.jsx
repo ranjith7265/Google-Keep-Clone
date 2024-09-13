@@ -15,7 +15,7 @@ function TakeNote() {
 
   const handleOutsideClick = () => {
     if (
-      inputTitleRef.current.value.trim() !== "" &&
+      inputTitleRef.current.value.trim() !== "" ||
       inputNoteRef.current.value.trim() !== ""
     ) {
       handleClick();

@@ -43,16 +43,16 @@ function Header({ onMenuClick, getSearchValue }) {
         <div onClick={() => dispatch(toggleLayout())}>
           {layout ? (
             <TfiLayoutAccordionSeparated
-              style={{ fontSize: 25, marginLeft: 15 }}
+              style={{ fontSize: 22, marginLeft: 15 }}
             />
           ) : (
-            <TfiLayoutGrid2 style={{ fontSize: 25, marginLeft: 15 }} />
+            <TfiLayoutGrid2 style={{ fontSize: 22, marginLeft: 15 }} />
           )}
         </div>
-        <IoSettingsOutline style={{ fontSize: 25, marginLeft: 20 }} />
+        <IoSettingsOutline style={{ fontSize: 23, marginLeft: 20 }} />
         <button onClick={() => dispatch(toggleTheme())}>
           {theme ? (
-            <IoSunnyOutline style={{ fontSize: 30 }} />
+            <IoSunnyOutline style={{ fontSize: 25 }} />
           ) : (
             <RiMoonClearLine style={{ fontSize: 25 }} />
           )}
