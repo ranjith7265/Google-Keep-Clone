@@ -8,16 +8,14 @@ import { TfiLayoutGrid2, TfiLayoutAccordionSeparated } from "react-icons/tfi";
 import { toggleLayout, toggleTheme } from "../store/keepSlice";
 import { RiMoonClearLine } from "react-icons/ri";
 
-
-
 function Header({ onMenuClick, getSearchValue }) {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const layout = useSelector((state) => state.fullLayout);
   const theme = useSelector((state) => state.theme);
 
   const handleChange = (e) => {
-    getSearchValue(e.target.value)
-  }
+    getSearchValue(e.target.value);
+  };
   return (
     <nav className={`nav-bar container-fluid ${theme && "dark-theme"}`}>
       <div className="nav-menu" onClick={onMenuClick}>

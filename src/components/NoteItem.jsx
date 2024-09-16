@@ -13,6 +13,8 @@ import {
   pinNote,
   archiveNote,
   updateCardColor,
+  setLabel,
+  imgUrl,
 } from "../store/keepSlice";
 import { useState } from "react";
 
@@ -21,14 +23,18 @@ function NoteItem({ note }) {
   const [file, setFile] = useState(null);
   const theme = useSelector((state) => state.theme);
   const layout = useSelector((state) => state.fullLayout);
+  const labels = useSelector((state) => state.labels);
 
-  
   const handleFileUpload = (e) => {
+    dispatch(
+      imgUrl({ id: note.id, imgUrl: URL.createObjectURL(e.target.files[0]) })
+    );
     setFile(URL.createObjectURL(e.target.files[0]));
   };
+
   return (
     <li
-      className={`card note-list ${theme && "text-bg-secondary"} m-3 p-2`}
+      className={`card note-list ${theme ? "text-bg-secondary" : ""} m-3 p-2`}
       style={{
         width: `${layout ? "40rem" : "16rem"}`,
         backgroundColor: `${note.color}`,
@@ -36,18 +42,18 @@ function NoteItem({ note }) {
     >
       <img
         className="card-img-top"
-        src={file}
+        src={note.imgUrl}
         style={{ display: `${file ? "block" : "none"}` }}
       ></img>
       <div className="card-body">
         <h5
-          className={`card-title ${theme && "text-white"}`}
+          className={`card-title ${theme ? "text-white" : ""}`}
           style={{ color: "#5f6368" }}
         >
           {note.title}
         </h5>
         <p
-          className={`card-text ${theme && "text-light"}`}
+          className={`card-text ${theme ? "text-light" : ""}`}
           style={{ color: "#5f6368" }}
         >
           {note.note}
@@ -119,6 +125,26 @@ function NoteItem({ note }) {
         <span className="img-delete-icon" onClick={() => setFile(null)}>
           <MdDelete color="#fff" style={{ fontSize: 16 }} />
         </span>
+      )}
+      <span className="time-batch">
+        <span className={theme ? "badge" : ""}>{note.time}</span>
+      </span>
+      {labels.length > 0 && (
+        <div className="select-container">
+          <select
+            className="custom-select"
+            onChange={(e) =>
+              dispatch(setLabel({ id: note.id, label: e.target.value }))
+            }
+          >
+            <option value=""></option>
+            {labels.map((label) => (
+              <option key={label} className="label-option" value={label}>
+                {label}
+              </option>
+            ))}
+          </select>
+        </div>
       )}
     </li>
   );

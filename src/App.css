@@ -52,7 +52,7 @@ body {
   top: 8px;
   cursor: pointer;
 }
-.card-color-pick{
+.card-color-pick {
   display: none;
   position: absolute;
   right: 70px;
@@ -72,49 +72,64 @@ body {
   bottom: 9px;
   cursor: pointer;
 }
-.image-upload{
+.image-upload {
   display: none;
   position: absolute;
   right: 98px;
   bottom: 9px;
 }
 
-.img-delete-icon{
+.labels-icon {
+  display: none;
+  position: absolute;
+  right: 125px;
+  bottom: 9px;
+}
+
+.img-delete-icon {
   height: 22px;
   width: 22px;
   position: absolute;
   right: 15px;
-  bottom: 100px;
+  bottom: 130px;
   background-color: #303030;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
-.note-list:hover .image-upload{
-  display: block;
-  
-}
-.note-list:hover .delete-icon{
-  display: block;
-}
-.note-list:hover .archive-icon{
-  display: block;
-}
-.note-list:hover .card-color-pick{
-  display: block;
-}
-
 .dark-theme {
   background-color: #5f6368;
   color: #fff;
   transition: all 0.3s ease-in-out;
 }
-
-.notFound{
+.time-batch {
+  color: var(--text-grey);
+  padding: 0.2rem 1rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+}
+.notFound {
   position: absolute;
   top: 5.5rem;
   left: 30rem;
+}
+.note-list:hover .select-container {
+  display: block;
+}
+.note-list:hover .image-upload {
+  display: block;
+}
+.note-list:hover .labels-icon {
+  display: block;
+}
+.note-list:hover .delete-icon {
+  display: block;
+}
+.note-list:hover .archive-icon {
+  display: block;
+}
+.note-list:hover .card-color-pick {
+  display: block;
 }
 
 /* ======== Nav-bar section starts ======  */
@@ -127,6 +142,7 @@ body {
 
 .nav-menu {
   margin: 0rem 1rem;
+  cursor: pointer;
 }
 .nav-logo {
   margin-right: 1rem;
@@ -178,6 +194,7 @@ body {
 /* ======== Nav-bar section ends ======  */
 
 /* ======== Main section starts ======  */
+
 .hero-container {
   height: 89vh;
   width: 100vw;
@@ -186,6 +203,7 @@ body {
 .hero-container::-webkit-scrollbar {
   display: none;
 }
+
 /* === SideMenu section starts ===  */
 .side-menu {
   width: 25vw;
@@ -195,6 +213,7 @@ body {
 .menu-hide {
   width: 4.9vw;
 }
+
 .side-menu-links {
   margin-top: 1rem;
   display: flex;
@@ -383,5 +402,49 @@ body {
   color: #fbbc04;
 }
 /* === Trash section ends ===  */
+
+/* === Labels section starts ===  */
+#labels {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.create-label-container {
+  padding: 2rem;
+  box-shadow: 1px 1px 3px #414040;
+}
+.label-input {
+  outline: none;
+  border: none;
+  padding: 0.7rem;
+  border-bottom: 1px solid #5f6368;
+}
+.create-label-container div {
+  margin: 1rem 1rem 0.5rem 0rem;
+  display: flex;
+  justify-content: flex-end;
+}
+.select-container {
+  display: none;
+  width: 0.5rem;
+  position: absolute;
+  bottom: 7px;
+  left: 115px;
+}
+.custom-select {
+  width: 1rem;
+  outline: none;
+  border: none;
+}
+.label-delete {
+  margin-left: 1rem;
+  visibility: hidden;
+}
+
+.side-menu-link:hover .label-delete {
+  visibility: visible;
+}
+
+/* === Labels section ends ===  */
 
 /* ======== Main section ends ======  */

@@ -1,4 +1,3 @@
-
 import TakeNote from "./TakeNote";
 import NoteList from "./NoteList";
 import { useSelector } from "react-redux";
@@ -18,13 +17,16 @@ function Notes({ searchValue }) {
       }
     }
   });
+
   if (searchValue.trim().length > 0) {
     return (
       <section
-      id="archive"
-      className={`menu-sections ${theme && "dark-theme"}`}
+        id="archive"
+        className={`menu-sections ${theme && "dark-theme"}`}
       >
-        {searchFiltered.length === 0 && <span className="notFound" >No Matching Results!!</span>}
+        {searchFiltered.length === 0 && (
+          <span className="notFound">No Matching Results!!</span>
+        )}
         <ul className="note-lists">
           {searchFiltered.map((note) => (
             <NoteItem key={note.id} note={note} />

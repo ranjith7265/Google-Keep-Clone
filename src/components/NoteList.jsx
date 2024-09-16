@@ -1,10 +1,8 @@
 import { useSelector } from "react-redux";
 import NoteItem from "./NoteItem";
-// import { Reorder } from "framer-motion";
-// import { updateDrag } from "../store/keepSlice";
+import { useState } from "react";
 
-function NoteList() {
-  // const dispatch = useDispatch();
+const NoteList = () => {
   const notes = useSelector((state) => state.notes);
   const layout = useSelector((state) => state.fullLayout);
   const theme = useSelector((state) => state.theme);
@@ -13,6 +11,7 @@ function NoteList() {
   const otherNotes = notes.filter(
     (note) => note.isArchive === false && note.isPinned === false
   );
+
   const pinnedNotes = notes.filter(
     (note) => note.isPinned === true && note.isArchive === false
   );
@@ -34,44 +33,30 @@ function NoteList() {
         <span>Notes you add appear here</span>
       </section>
     );
-  } else {
-    return (
-      <div className="note-lists-container">
-        {pinnedNotes.length > 0 && (
-          <ul className={`note-lists ${layout ? "full-layout" : ""}`}>
-            <span className={`note-batch ${theme && "note-batch-dark"}`}>
-              PINNED
-            </span>
-            {pinnedNotes.map((note) => (
-              <NoteItem key={note.id} note={note} />
-            ))}
-          </ul>
-        )}
+  }
+  return (
+    <div className="note-lists-container">
+      {pinnedNotes.length > 0 && (
         <ul className={`note-lists ${layout ? "full-layout" : ""}`}>
-          {pinnedNotes.length > 0 && (
-            <span className={`note-batch ${theme && "note-batch-dark"}`}>
-              OTHERS
-            </span>
-          )}
-          {otherNotes.map((note) => (
+          <span className={`note-batch ${theme && "note-batch-dark"}`}>
+            PINNED
+          </span>
+          {pinnedNotes.map((note) => (
             <NoteItem key={note.id} note={note} />
           ))}
         </ul>
-
-        {/* <Reorder.Group
-            axis="x"
-            values={otherNotes}
-            onReorder={e => dispatch(updateDrag(e))}
-            className="note-lists"
-          >
-            {otherNotes.map((note) => (
-              <Reorder.Item key={note.id} value={note}>
-                <NoteItem key={note.id} note={note} />
-              </Reorder.Item>
-            ))}
-          </Reorder.Group> */}
-      </div>
-    );
-  }
-}
+      )}
+      <ul className={`note-lists ${layout ? "full-layout" : ""}`}>
+        {pinnedNotes.length > 0 && (
+          <span className={`note-batch ${theme && "note-batch-dark"}`}>
+            OTHERS
+          </span>
+        )}
+        {otherNotes.map((note) => (
+          <NoteItem key={note.id} note={note} />
+        ))}
+      </ul>
+    </div>
+  );
+};
 export default NoteList;

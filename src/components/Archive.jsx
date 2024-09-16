@@ -23,19 +23,15 @@ function Archive() {
         <span>Your archived notes appear here</span>
       </section>
     );
-  } else {
-    return (
-      <section
-        id="archive"
-        className={`menu-sections ${theme && "dark-theme"}`}
-      >
-        <ul className="note-lists">
-          {archivedNotes.map((note) => (
-            <NoteItem key={note.id} note={note} />
-          ))}
-        </ul>
-      </section>
-    );
   }
+  return (
+    <section id="archive" className={`menu-sections ${theme && "dark-theme"}`}>
+      <ul className="note-lists">
+        {archivedNotes.map((note) => (
+          <NoteItem key={note.id} note={note} />
+        ))}
+      </ul>
+    </section>
+  );
 }
 export default Archive;

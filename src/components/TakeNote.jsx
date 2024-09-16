@@ -48,7 +48,10 @@ function TakeNote() {
       onClick={handleOutsideClick}
       onKeyUp={handleKeypress}
     >
-      <div className={`take-note ${theme && "note-dark"}`} onClick={(e) => e.stopPropagation()}>
+      <div
+        className={`take-note ${theme && "note-dark"}`}
+        onClick={(e) => e.stopPropagation()}
+      >
         <input
           type="text"
           className="note-title"

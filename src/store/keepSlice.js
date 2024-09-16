@@ -1,4 +1,4 @@
-import { createSlice} from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
 
 const initialState = {
@@ -6,6 +6,7 @@ const initialState = {
   deletedNotes: [],
   fullLayout: false,
   theme: false,
+  labels: [],
 };
 
 const keepSlice = createSlice({
@@ -13,6 +14,7 @@ const keepSlice = createSlice({
   initialState,
   reducers: {
     addNote: (state, action) => {
+      const time = new Date().toLocaleTimeString();
       const { title, note } = action.payload;
       state.notes.push({
         id: uuidv4(),
@@ -20,7 +22,9 @@ const keepSlice = createSlice({
         note: note,
         isArchive: false,
         isPinned: false,
-        color: ""
+        color: "",
+        time: time,
+        label: "",
       });
     },
     removeNote: (state, action) => {
@@ -55,20 +59,37 @@ const keepSlice = createSlice({
     toggleTheme: (state) => {
       state.theme = !state.theme;
     },
-    updateDrag: (state, action) => {
-      // const updateArray = action.payload
-      // const newArray = updateArray.filter(
-      //   (note) =>
-      //     !state.notes.some((existingItem) => existingItem.id === note.id)
-      // );
-      // console.log(newArray)
-      // const pinned = state.notes((note) => note.isPinned === true)
-      state.notes = [...action.payload];
-    },
     updateCardColor: (state, action) => {
       state.notes = state.notes.map((note) =>
         note.id === action.payload.id
           ? { ...note, color: action.payload.color }
+          : note
+      );
+    },
+    addTime: (state, action) => {
+      state.notes = state.notes.map((note) =>
+        note.id === action.payload.id
+          ? { ...note, time: action.payload.time }
+          : note
+      );
+    },
+    createLabel: (state, action) => {
+      state.labels.push(action.payload);
+    },
+    setLabel: (state, action) => {
+      state.notes = state.notes.map((note) =>
+        note.id === action.payload.id
+          ? { ...note, label: action.payload.label }
+          : note
+      );
+    },
+    deleteLabel: (state, action) => {
+      state.labels.pop(action.payload);
+    },
+    imgUrl: (state, action) => {
+      state.notes = state.notes.map((note) =>
+        note.id === action.payload.id
+          ? { ...note, imgUrl: action.payload.imgUrl }
           : note
       );
     },
@@ -83,8 +104,11 @@ export const {
   removeForever,
   toggleLayout,
   toggleTheme,
-  updateDrag,
-  updateCardColor
+  updateCardColor,
+  createLabel,
+  setLabel,
+  deleteLabel,
+  imgUrl,
 } = keepSlice.actions;
 
 export default keepSlice.reducer;

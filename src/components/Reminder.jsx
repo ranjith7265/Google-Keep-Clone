@@ -1,5 +1,5 @@
-import React from 'react'
-import { useSelector } from 'react-redux';
+import React from "react";
+import { useSelector } from "react-redux";
 function Reminder() {
   const theme = useSelector((state) => state.theme);
   return (
@@ -7,4 +7,4 @@ function Reminder() {
   );
 }
 
-export default Reminder
+export default Reminder;

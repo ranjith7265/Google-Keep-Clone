@@ -25,14 +25,13 @@ function Trash() {
       confirmButtonText: "Delete",
     }).then((result) => {
       if (result.isConfirmed) {
-         dispatch(removeForever(id));
-       }
-     });
+        dispatch(removeForever(id));
+      }
+    });
   };
   const handleRestore = (note) => {
     dispatch(addNote(note));
     dispatch(removeForever(note.id));
-   
   };
   const handleEmptyTrash = () => {
     Swal.fire({
