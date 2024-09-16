@@ -17,12 +17,13 @@ import {
 import { useState } from "react";
 
 function NoteItem({ note }) {
+  const dispatch = useDispatch();
+  const [file, setFile] = useState(null);
   const theme = useSelector((state) => state.theme);
   const layout = useSelector((state) => state.fullLayout);
-  const dispatch = useDispatch();
-  const [file, setFile] = useState();
+
+  
   const handleFileUpload = (e) => {
-    console.log(e.target.files[0]);
     setFile(URL.createObjectURL(e.target.files[0]));
   };
   return (
@@ -83,11 +84,13 @@ function NoteItem({ note }) {
       <span className="card-pin-icon">
         {note.isPinned ? (
           <TbPinnedFilled
+            color={`${file !== null ? "#fff" : "#000"}`}
             style={{ fontSize: 16 }}
             onClick={() => dispatch(pinNote(note.id))}
           />
         ) : (
           <MdOutlinePushPin
+            color={`${file !== null ? "#fff" : "#000"}`}
             style={{ fontSize: 16 }}
             onClick={() => dispatch(pinNote(note.id))}
           />
@@ -112,6 +115,11 @@ function NoteItem({ note }) {
           />
         )}
       </span>
+      {file !== null && (
+        <span className="img-delete-icon" onClick={() => setFile(null)}>
+          <MdDelete color="#fff" style={{ fontSize: 16 }} />
+        </span>
+      )}
     </li>
   );
 }
