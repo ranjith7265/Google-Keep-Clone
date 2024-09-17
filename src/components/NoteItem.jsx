@@ -18,7 +18,7 @@ import {
 } from "../store/keepSlice";
 import { useState } from "react";
 
-function NoteItem({ note }) {
+function NoteItem({ note, index, onDragStart, DragEnd }) {
   const dispatch = useDispatch();
   const [file, setFile] = useState(null);
   const theme = useSelector((state) => state.theme);
@@ -34,10 +34,16 @@ function NoteItem({ note }) {
 
   return (
     <li
+      draggable
       className={`card note-list ${theme ? "text-bg-secondary" : ""} m-3 p-2`}
       style={{
         width: `${layout ? "40rem" : "16rem"}`,
         backgroundColor: `${note.color}`,
+      }}
+      onDragStart={() => onDragStart(index)}
+      onDrop={() => DragEnd(index)}
+      onDragOver={(e) => {
+        e.preventDefault();
       }}
     >
       <img

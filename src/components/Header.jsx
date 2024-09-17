@@ -22,7 +22,7 @@ function Header({ onMenuClick, getSearchValue }) {
         <LuMenu style={{ fontSize: 23 }} />
       </div>
       <div className="nav-logo">
-        <img height={40} width={40} src={Logo} alt="Logo"></img>
+        <img draggable="false" height={40} width={40} src={Logo} alt="Logo"></img>
         <span>Keep</span>
       </div>
       <div className={`nav-search ${theme && "bg-secondary"}`}>

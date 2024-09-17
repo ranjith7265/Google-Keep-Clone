@@ -22,6 +22,7 @@ const keepSlice = createSlice({
         note: note,
         isArchive: false,
         isPinned: false,
+        edit: false,
         color: "",
         time: time,
         label: "",
@@ -93,6 +94,14 @@ const keepSlice = createSlice({
           : note
       );
     },
+    updateDrag: (state, action) => {
+      const pinned = state.notes.filter((note) => note.isPinned === true);
+      state.notes = [...action.payload, ...pinned];
+    },
+    updatePinnedDrag: (state, action) => {
+      const others = state.notes.filter((note) => note.isPinned === false);
+      state.notes = [...action.payload, ...others];
+    },
   },
 });
 
@@ -109,6 +118,8 @@ export const {
   setLabel,
   deleteLabel,
   imgUrl,
+  updateDrag,
+  updatePinnedDrag,
 } = keepSlice.actions;
 
 export default keepSlice.reducer;

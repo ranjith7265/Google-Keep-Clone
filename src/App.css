@@ -15,7 +15,6 @@ li {
   margin: 0;
 }
 body {
-  user-select: none;
   color: #5f6368;
 }
 
@@ -138,6 +137,7 @@ body {
   display: flex;
   align-items: center;
   border-bottom: 1px solid #ccc;
+  user-select: none;
 }
 
 .nav-menu {
@@ -149,6 +149,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  
 }
 .nav-logo span {
   font-size: 1.4rem;
@@ -353,6 +354,14 @@ body {
   width: 55vw;
   flex-direction: column;
   flex-wrap: nowrap;
+}
+.note-list{
+  user-select: none;
+  cursor:grab;
+}
+
+.note-list:active{
+  border: 1px solid #303030;
 }
 .note-batch {
   position: absolute;
