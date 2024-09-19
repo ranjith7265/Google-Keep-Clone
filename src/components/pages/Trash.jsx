@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { MdDeleteForever } from "react-icons/md";
 import { MdRestoreFromTrash } from "react-icons/md";
-import { removeForever, addNote } from "../store/keepSlice";
+import { removeForever, addNote } from "../../store/keepSlice";
 import Swal from "sweetalert2";
 import "sweetalert2/src/sweetalert2.scss";
 

@@ -1,9 +1,9 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import NoteItem from "./NoteItem";
+import NoteItem from "../Notes/NoteItem";
 
-function NewLabel() {
+function CreateLabel() {
   const { label } = useParams();
   const notes = useSelector((state) => state.notes);
   const theme = useSelector((state) => state.theme);
@@ -25,4 +25,4 @@ function NewLabel() {
   );
 }
 
-export default NewLabel;
+export default CreateLabel;

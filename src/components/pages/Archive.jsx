@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import NoteItem from "./NoteItem";
+import NoteItem from "../pages/Notes/NoteItem";
 
 function Archive() {
   const notes = useSelector((state) => state.notes);

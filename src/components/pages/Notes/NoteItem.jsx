@@ -5,7 +5,6 @@ import { MdOutlineArchive, MdOutlineColorLens } from "react-icons/md";
 import { CiImageOn } from "react-icons/ci";
 import { TbPinnedFilled } from "react-icons/tb";
 import { BiSolidArchiveIn } from "react-icons/bi";
-import TakeNote from "./TakeNote";
 import {
 	removeNote,
 	pinNote,
@@ -14,7 +13,7 @@ import {
 	setLabel,
 	imgUrl,
 	editState,
-} from "../store/keepSlice";
+} from "../../../store/keepSlice";
 
 function NoteItem({ note, index, onDragStart, DragEnd }) {
 	const dispatch = useDispatch();

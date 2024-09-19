@@ -1,11 +1,11 @@
 import React from "react";
-import Logo from "../assets/img/Keep-logo.png";
+import Logo from "../../assets/img/Keep-logo.png";
 import { LuMenu } from "react-icons/lu";
 import { IoIosSearch } from "react-icons/io";
 import { IoSettingsOutline, IoSunnyOutline } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
 import { TfiLayoutGrid2, TfiLayoutAccordionSeparated } from "react-icons/tfi";
-import { toggleLayout, toggleTheme } from "../store/keepSlice";
+import { toggleLayout, toggleTheme } from "../../store/keepSlice";
 import { RiMoonClearLine } from "react-icons/ri";
 
 function Header({ onMenuClick, getSearchValue }) {

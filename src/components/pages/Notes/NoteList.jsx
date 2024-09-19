@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import NoteItem from "./NoteItem";
-import { updateDrag, updatePinnedDrag } from "../store/keepSlice";
+import { updateDrag, updatePinnedDrag } from "../../../store/keepSlice";
 import TakeNote from "./TakeNote";
 
 const dragInitial = {

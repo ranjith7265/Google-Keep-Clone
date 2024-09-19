@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createLabel } from "../store/keepSlice";
+import { createLabel } from "../../../store/keepSlice";
 
 function Labels() {
   const dispatch = useDispatch();

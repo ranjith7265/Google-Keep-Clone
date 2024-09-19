@@ -4,7 +4,7 @@ import { MdOutlineMoreTime } from "react-icons/md";
 import { IoMdColorPalette, IoMdMore } from "react-icons/io";
 import { CiImageOn } from "react-icons/ci";
 import { BiSolidArchiveIn } from "react-icons/bi";
-import { addNote, editState } from "../store/keepSlice";
+import { addNote, editState } from "../../../store/keepSlice";
 
 function TakeNote({}) {
 	const dispatch = useDispatch();
