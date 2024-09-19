@@ -6,44 +6,44 @@ import { CiImageOn } from "react-icons/ci";
 import { BiSolidArchiveIn } from "react-icons/bi";
 import { addNote, editState } from "../../../store/keepSlice";
 
+const noteObject = {
+	title: "",
+	note: "",
+};
+
 function TakeNote({}) {
 	const dispatch = useDispatch();
 	const [show, setShow] = useState(false);
-	const inputNoteRef = useRef();
-	const inputTitleRef = useRef();
+	const [NoteItem, setNoteItem] = useState(noteObject);
 	const theme = useSelector((state) => state.theme);
 	const edit = useSelector((state) => state.edit);
+	const { title, note } = NoteItem;
 
 	const handleOutsideClick = () => {
-		if (
-			inputTitleRef.current.value.trim() !== "" ||
-			inputNoteRef.current.value.trim() !== ""
-		) {
+		if (title.trim() !== "" || note.trim() !== "") {
 			handleClick();
 		}
 	};
 
 	const handleKeypress = (e) => {
-		e.key === "Enter" || (e.keyCode === 13 && handleClick());
+		if (e.keyCode === 13) {
+			handleClick();
+		}
 	};
 
 	const handleClick = () => {
 		edit && dispatch(editState());
 		if (!edit) {
-			if (
-				inputTitleRef.current.value.trim() !== "" ||
-				inputNoteRef.current.value.trim() !== ""
-			) {
+			if (title.trim() !== "" || note.trim() !== "") {
 				dispatch(
 					addNote({
-						title: inputTitleRef.current.value,
-						note: inputNoteRef.current.value,
+						title,
+						note,
 					})
 				);
-				inputTitleRef.current.value = "";
-				inputNoteRef.current.value = "";
 			}
 		}
+		setNoteItem(noteObject);
 		setShow(false);
 	};
 	return (
@@ -57,17 +57,20 @@ function TakeNote({}) {
 				onClick={(e) => e.stopPropagation()}
 			>
 				<input
+					value={NoteItem.title}
 					type="text"
 					className={`note-title ${edit ? "edit-mode" : ""} `}
 					placeholder="Title"
-					ref={inputTitleRef}
+					onChange={(e) => setNoteItem({ ...NoteItem, title: e.target.value })}
 					style={show ? { display: "block" } : { display: "none" }}
 				/>
 				<input
+					name="note"
+					value={NoteItem.note}
 					type="text"
 					className="note-textarea"
 					placeholder="Take a note"
-					ref={inputNoteRef}
+					onChange={(e) => setNoteItem({ ...NoteItem, note: e.target.value })}
 					onClick={() => setShow(true)}
 				/>
 				<div></div>
