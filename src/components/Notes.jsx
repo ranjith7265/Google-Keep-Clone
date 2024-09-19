@@ -9,10 +9,10 @@ function Notes({ searchValue }) {
 
   const searchFiltered = notes.filter((note) => {
     if (searchValue.length > 0) {
-      if (note.note.toLowerCase().includes(searchValue.toLowerCase())) {
-        return note;
-      }
-      if (note.title.toLowerCase().includes(searchValue.toLowerCase())) {
+      if (
+        note.note.toLowerCase().includes(searchValue.toLowerCase()) ||
+        note.title.toLowerCase().includes(searchValue.toLowerCase())
+      ) {
         return note;
       }
     }

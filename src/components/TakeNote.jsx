@@ -1,18 +1,19 @@
-import React, { useRef, useState } from "react";
+import { useState, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { MdOutlineMoreTime } from "react-icons/md";
 import { IoMdColorPalette, IoMdMore } from "react-icons/io";
 import { CiImageOn } from "react-icons/ci";
 import { BiSolidArchiveIn } from "react-icons/bi";
-import { addNote } from "../store/keepSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { addNote, editState } from "../store/keepSlice";
 
-function TakeNote() {
+function TakeNote({ edit, editItem }) {
   const dispatch = useDispatch();
-  const theme = useSelector((state) => state.theme);
-  const inputTitleRef = useRef();
-  const inputNoteRef = useRef();
   const [show, setShow] = useState(false);
+  const inputNoteRef = useRef();
+  const inputTitleRef = useRef();
+  const theme = useSelector((state) => state.theme);
 
+  console.log(editItem);
   const handleOutsideClick = () => {
     if (
       inputTitleRef.current.value.trim() !== "" ||
@@ -27,19 +28,28 @@ function TakeNote() {
       handleClick();
     }
   };
+
   const handleClick = () => {
     setShow(false);
-    const inputTitle = inputTitleRef.current.value.trim();
-    const inputNote = inputNoteRef.current.value.trim();
-    if (inputTitle !== "" || inputNote !== "") {
-      dispatch(
-        addNote({
-          title: inputTitle,
-          note: inputNote,
-        })
-      );
-      inputTitleRef.current.value = "";
-      inputNoteRef.current.value = "";
+    if (edit) {
+      setValueT("");
+      dispatch(editState());
+    }
+
+    if (!edit) {
+      if (
+        inputTitleRef.current.value.trim() !== "" ||
+        inputNoteRef.current.value.trim() !== ""
+      ) {
+        dispatch(
+          addNote({
+            title: inputTitleRef.current.value,
+            note: inputNoteRef.current.value,
+          })
+        );
+        inputTitleRef.current.value = "";
+        inputNoteRef.current.value = "";
+      }
     }
   };
   return (
@@ -47,6 +57,7 @@ function TakeNote() {
       className="take-note-container"
       onClick={handleOutsideClick}
       onKeyUp={handleKeypress}
+      style={edit ? { zIndex: 7 } : { zIndex: "auto" }}
     >
       <div
         className={`take-note ${theme && "note-dark"}`}
@@ -56,20 +67,20 @@ function TakeNote() {
           type="text"
           className="note-title"
           placeholder="Title"
-          style={show ? { display: "block" } : { display: "none" }}
           ref={inputTitleRef}
+          style={show || edit ? { display: "block" } : { display: "none" }}
         />
         <input
           type="text"
           className="note-textarea"
           placeholder="Take a note"
-          onClick={() => setShow(true)}
           ref={inputNoteRef}
+          onClick={() => setShow(true)}
         />
         <div></div>
         <footer
           className="note-footer"
-          style={show ? { display: "" } : { display: "none" }}
+          style={show || edit ? { display: "" } : { display: "none" }}
         >
           <div className="footer-links">
             <button>

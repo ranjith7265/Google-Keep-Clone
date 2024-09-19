@@ -19,7 +19,11 @@ function SideMenu({ showMenu }) {
       }`}
     >
       <div className="side-menu-links">
-        <NavLink className={`${theme ? "link-light" : "link-dark"}`} to="/">
+        <NavLink
+          className={`${theme ? "link-light" : "link-dark"}`}
+          to="/"
+          draggable="false"
+        >
           <li className="side-menu-link">
             <img src={notesIcon} alt="notes"></img>
             <span>Notes</span>
@@ -28,6 +32,7 @@ function SideMenu({ showMenu }) {
         <NavLink
           className={`${theme ? "link-light" : "link-dark"}`}
           to="/reminder"
+          draggable="false"
         >
           <li className="side-menu-link">
             <img src={reminderIcon} alt="reminder"></img>
@@ -38,6 +43,7 @@ function SideMenu({ showMenu }) {
         <NavLink
           className={`${theme ? "link-light" : "link-dark"}`}
           to="/labels"
+          draggable="false"
         >
           <li className="side-menu-link">
             <img src={labelsIcon} alt="labels"></img>
@@ -50,6 +56,7 @@ function SideMenu({ showMenu }) {
               key={label}
               className={`${theme ? "link-light" : "link-dark"}`}
               to={`/labels/${label.toLowerCase()}`}
+              draggable="false"
             >
               <li className="side-menu-link">
                 <button
@@ -65,6 +72,7 @@ function SideMenu({ showMenu }) {
         <NavLink
           className={`${theme ? "link-light" : "link-dark"}`}
           to="/archive"
+          draggable="false"
         >
           <li className="side-menu-link">
             <img src={ArchiveIcon} alt="archive"></img>
@@ -74,6 +82,7 @@ function SideMenu({ showMenu }) {
         <NavLink
           className={`${theme ? "link-light" : "link-dark"}`}
           to="/trash"
+          draggable="false"
         >
           <li className="side-menu-link">
             <img src={TrashIcon} alt="trash"></img>

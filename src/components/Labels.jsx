@@ -15,7 +15,7 @@ function Labels() {
     <section id="labels" className={`menu-sections ${theme && "dark-theme"}`}>
       <div className="create-label-container">
         <input
-          className="label-input"
+          className={`label-input ${theme && "dark-theme"}`}
           type="text"
           placeholder="Create new label"
           ref={labelRef}

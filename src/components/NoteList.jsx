@@ -1,21 +1,56 @@
-import { useSelector } from "react-redux";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import NoteItem from "./NoteItem";
-import { useState } from "react";
+import { updateDrag, updatePinnedDrag } from "../store/keepSlice";
+
+const dragInitial = {
+  OthersDragStart: null,
+  OthersDragEnd: null,
+  PinnedDragStart: null,
+  PinnedDragEnd: null,
+};
 
 const NoteList = () => {
+  const dispatch = useDispatch();
+  const [otherNotes, setOtherNotes] = useState([]);
+  const [pinnedNotes, setPinnedNotes] = useState([]);
+  const [drag, setDrag] = useState(dragInitial);
+  const { OthersDragStart, OthersDragEnd, PinnedDragStart, PinnedDragEnd } =
+    drag;
+
   const notes = useSelector((state) => state.notes);
-  const layout = useSelector((state) => state.fullLayout);
   const theme = useSelector((state) => state.theme);
+  const layout = useSelector((state) => state.fullLayout);
 
   const currentNotes = notes.filter((note) => note.isArchive === false);
-  const otherNotes = notes.filter(
-    (note) => note.isArchive === false && note.isPinned === false
-  );
+  useEffect(() => {
+    setOtherNotes(
+      notes.filter(
+        (note) => note.isArchive === false && note.isPinned === false
+      )
+    );
+    setPinnedNotes(
+      notes.filter((note) => note.isPinned === true && note.isArchive === false)
+    );
+  }, [notes]);
 
-  const pinnedNotes = notes.filter(
-    (note) => note.isPinned === true && note.isArchive === false
-  );
+  if (PinnedDragStart !== null && PinnedDragEnd !== null) {
+    let arranged = Array.from(pinnedNotes);
+    const [removePinnedNote] = arranged.splice(PinnedDragStart, 1);
+    arranged.splice(PinnedDragEnd, 0, removePinnedNote);
 
+    dispatch(updatePinnedDrag(arranged));
+    setDrag(dragInitial);
+  }
+
+  if (OthersDragStart !== null && OthersDragEnd !== null) {
+    let arranged = Array.from(otherNotes);
+    const [removeOtherNote] = arranged.splice(OthersDragStart, 1);
+    arranged.splice(OthersDragEnd, 0, removeOtherNote);
+
+    dispatch(updateDrag(arranged));
+    setDrag(dragInitial);
+  }
   if (currentNotes.length <= 0) {
     return (
       <section className="no-list-items">
@@ -34,26 +69,44 @@ const NoteList = () => {
       </section>
     );
   }
+
   return (
     <div className="note-lists-container">
       {pinnedNotes.length > 0 && (
         <ul className={`note-lists ${layout ? "full-layout" : ""}`}>
-          <span className={`note-batch ${theme && "note-batch-dark"}`}>
+          <span className={`note-batch pinned ${theme && "note-batch-dark"}`}>
             PINNED
           </span>
-          {pinnedNotes.map((note) => (
-            <NoteItem key={note.id} note={note} />
+          {pinnedNotes.map((note, index) => (
+            <NoteItem
+              key={note.id}
+              note={note}
+              index={index}
+              onDragStart={(index) =>
+                setDrag({ ...drag, PinnedDragStart: index })
+              }
+              DragEnd={(index) => setDrag({ ...drag, PinnedDragEnd: index })}
+            />
           ))}
         </ul>
       )}
+
       <ul className={`note-lists ${layout ? "full-layout" : ""}`}>
         {pinnedNotes.length > 0 && (
-          <span className={`note-batch ${theme && "note-batch-dark"}`}>
+          <span className={`note-batch others ${theme && "note-batch-dark"}`}>
             OTHERS
           </span>
         )}
-        {otherNotes.map((note) => (
-          <NoteItem key={note.id} note={note} />
+        {otherNotes.map((note, index) => (
+          <NoteItem
+            key={note.id}
+            note={note}
+            index={index}
+            onDragStart={(index) =>
+              setDrag({ ...drag, OthersDragStart: index })
+            }
+            DragEnd={(index) => setDrag({ ...drag, OthersDragEnd: index })}
+          />
         ))}
       </ul>
     </div>

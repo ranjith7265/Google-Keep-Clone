@@ -7,10 +7,11 @@ const initialState = {
   fullLayout: false,
   theme: false,
   labels: [],
+  edit: false,
 };
 
 const keepSlice = createSlice({
-  name: "Notes",
+  name: "notes",
   initialState,
   reducers: {
     addNote: (state, action) => {
@@ -23,6 +24,7 @@ const keepSlice = createSlice({
         isArchive: false,
         isPinned: false,
         color: "",
+        edit: false,
         time: time,
         label: "",
       });
@@ -46,6 +48,12 @@ const keepSlice = createSlice({
         note.id === action.payload
           ? { ...note, isArchive: !note.isArchive }
           : note
+      );
+    },
+    updateNote: (state, action) => {
+      const { id, title, noteText } = action.payload;
+      state.notes = state.notes.map((note) =>
+        note.id === id ? { ...note, title: title, note: noteText } : note
       );
     },
     removeForever: (state, action) => {
@@ -93,6 +101,20 @@ const keepSlice = createSlice({
           : note
       );
     },
+    updateDrag: (state, action) => {
+      const pinned = state.notes.filter((note) => note.isPinned === true);
+      state.notes = [...action.payload, ...pinned];
+    },
+    updatePinnedDrag: (state, action) => {
+      const others = state.notes.filter((note) => note.isPinned === false);
+      state.notes = [...action.payload, ...others];
+    },
+    editState: (state) => {
+      state.edit = !state.edit;
+    },
+    setEdit: (state, action) => {
+      state.notes = state.notes.map((note) => note.id === action.payload? {...note, edit: true} : note)
+    }
   },
 });
 
@@ -109,6 +131,11 @@ export const {
   setLabel,
   deleteLabel,
   imgUrl,
+  updateDrag,
+  updatePinnedDrag,
+  updateNote,
+  editState,
+  setEdit
 } = keepSlice.actions;
 
 export default keepSlice.reducer;
