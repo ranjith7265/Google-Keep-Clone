@@ -76,7 +76,7 @@ const NoteList = () => {
 		<div className="note-lists-container">
 			{pinnedNotes.length > 0 && (
 				<ul className={`note-lists ${layout ? "full-layout" : ""}`}>
-					<span className={`note-batch pinned ${theme && "note-batch-dark"}`}>
+					<span className={`note-batch ${theme ? "note-batch-dark": ""}`}>
 						PINNED
 					</span>
 					{pinnedNotes.map((note, index) => (
@@ -95,7 +95,7 @@ const NoteList = () => {
 
 			<ul className={`note-lists ${layout ? "full-layout" : ""}`}>
 				{pinnedNotes.length > 0 && (
-					<span className={`note-batch others ${theme && "note-batch-dark"}`}>
+					<span className={`note-batch ${theme ? "note-batch-dark" : ""}`}>
 						OTHERS
 					</span>
 				)}

@@ -7,6 +7,7 @@ const initialState = {
   fullLayout: false,
   theme: false,
   labels: [],
+  editNote: {},
   edit: false,
 };
 
@@ -24,7 +25,6 @@ const keepSlice = createSlice({
         isArchive: false,
         isPinned: false,
         color: "",
-        edit: false,
         time: time,
         label: "",
       });
@@ -68,16 +68,18 @@ const keepSlice = createSlice({
       state.theme = !state.theme;
     },
     updateCardColor: (state, action) => {
+      const {id , color} = action.payload
       state.notes = state.notes.map((note) =>
-        note.id === action.payload.id
-          ? { ...note, color: action.payload.color }
+        note.id === id
+          ? { ...note, color: color }
           : note
       );
     },
     addTime: (state, action) => {
+      const {id, time} = action.payload
       state.notes = state.notes.map((note) =>
-        note.id === action.payload.id
-          ? { ...note, time: action.payload.time }
+        note.id === id
+          ? { ...note, time: time }
           : note
       );
     },
@@ -85,9 +87,10 @@ const keepSlice = createSlice({
       state.labels.push(action.payload);
     },
     setLabel: (state, action) => {
+      const {id, label} = action.payload 
       state.notes = state.notes.map((note) =>
-        note.id === action.payload.id
-          ? { ...note, label: action.payload.label }
+        note.id === id
+          ? { ...note, label: label }
           : note
       );
     },
@@ -95,9 +98,10 @@ const keepSlice = createSlice({
       state.labels.pop(action.payload);
     },
     imgUrl: (state, action) => {
+      const {id, imgUrl} = action.state
       state.notes = state.notes.map((note) =>
-        note.id === action.payload.id
-          ? { ...note, imgUrl: action.payload.imgUrl }
+        note.id === id
+          ? { ...note, imgUrl: imgUrl }
           : note
       );
     },
@@ -112,8 +116,8 @@ const keepSlice = createSlice({
     editState: (state) => {
       state.edit = !state.edit;
     },
-    setEdit: (state, action) => {
-      state.notes = state.notes.map((note) => note.id === action.payload? {...note, edit: true} : note)
+    getEditNote: (state, action) =>{
+      state.editNote = action.payload
     }
   },
 });
@@ -135,7 +139,7 @@ export const {
   updatePinnedDrag,
   updateNote,
   editState,
-  setEdit
+  getEditNote
 } = keepSlice.actions;
 
 export default keepSlice.reducer;

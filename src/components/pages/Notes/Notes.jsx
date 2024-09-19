@@ -22,7 +22,7 @@ function Notes({ searchValue }) {
 		return (
 			<section
 				id="archive"
-				className={`menu-sections ${theme && "dark-theme"}`}
+				className={`menu-sections ${theme ? "dark-theme" : ""}`}
 			>
 				{searchFiltered.length === 0 && (
 					<span className="notFound">No Matching Results!!</span>
@@ -36,7 +36,10 @@ function Notes({ searchValue }) {
 		);
 	}
 	return (
-		<section id="notes" className={`menu-sections ${theme && "dark-theme"}`}>
+		<section
+			id="notes"
+			className={`menu-sections ${theme ? "dark-theme" : ""}`}
+		>
 			<TakeNote />
 			<NoteList />
 		</section>

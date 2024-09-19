@@ -377,8 +377,8 @@ body {
 
 .edit-note {
   position: absolute;
-  top: 10rem;
-  left: 25rem;
+  top: 4.5rem;
+  left: 31.5rem;
 }
 .note-batch {
   margin-bottom: 1rem;
@@ -386,14 +386,6 @@ body {
   text-transform: capitalize;
   font-size: 0.7rem;
   font-weight: 600;
-}
-.pinned {
-  position: absolute;
-  top: 11.5rem;
-}
-.others{
-    position: absolute;
-    top: 23.5rem;
 }
 .note-batch-dark {
   color: #f1f3f4;

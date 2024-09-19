@@ -1,10 +1,15 @@
-import { useState, useRef } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { MdOutlineMoreTime } from "react-icons/md";
 import { IoMdColorPalette, IoMdMore } from "react-icons/io";
 import { CiImageOn } from "react-icons/ci";
 import { BiSolidArchiveIn } from "react-icons/bi";
-import { addNote, editState } from "../../../store/keepSlice";
+import {
+	addNote,
+	editState,
+	getEditNote,
+	updateNote,
+} from "../../../store/keepSlice";
 
 const noteObject = {
 	title: "",
@@ -17,8 +22,18 @@ function TakeNote({}) {
 	const [NoteItem, setNoteItem] = useState(noteObject);
 	const theme = useSelector((state) => state.theme);
 	const edit = useSelector((state) => state.edit);
+	const editNote = useSelector((state) => state.editNote);
 	const { title, note } = NoteItem;
 
+	useEffect(() => {
+		if (Object.keys(editNote).length > 0) {
+			setNoteItem({
+				id: editNote.id,
+				title: editNote.title,
+				note: editNote.note,
+			});
+		}
+	}, [editNote]);
 	const handleOutsideClick = () => {
 		if (title.trim() !== "" || note.trim() !== "") {
 			handleClick();
@@ -32,8 +47,16 @@ function TakeNote({}) {
 	};
 
 	const handleClick = () => {
-		edit && dispatch(editState());
-		if (!edit) {
+		if (edit) {
+			dispatch(
+				updateNote({
+					id: editNote.id,
+					title: title,
+					noteText: note,
+				})
+			);
+			dispatch(editState());
+		} else {
 			if (title.trim() !== "" || note.trim() !== "") {
 				dispatch(
 					addNote({
@@ -43,8 +66,9 @@ function TakeNote({}) {
 				);
 			}
 		}
-		setNoteItem(noteObject);
 		setShow(false);
+		dispatch(getEditNote({}));
+		setNoteItem(noteObject);
 	};
 	return (
 		<section

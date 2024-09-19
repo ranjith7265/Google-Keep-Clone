@@ -13,6 +13,7 @@ import {
 	setLabel,
 	imgUrl,
 	editState,
+	getEditNote
 } from "../../../store/keepSlice";
 
 function NoteItem({ note, index, onDragStart, DragEnd }) {
@@ -22,7 +23,6 @@ function NoteItem({ note, index, onDragStart, DragEnd }) {
 	const theme = useSelector((state) => state.theme);
 	const layout = useSelector((state) => state.fullLayout);
 	const labels = useSelector((state) => state.labels);
-	const [editItem, setEditItem] = useState(null);
 
 	const handleFileUpload = (e) => {
 		dispatch(
@@ -32,7 +32,7 @@ function NoteItem({ note, index, onDragStart, DragEnd }) {
 	};
 
 	const handleCardClick = (note) => {
-		setEditItem(note);
+		dispatch(getEditNote(note))
 		dispatch(editState());
 	};
 	return (
