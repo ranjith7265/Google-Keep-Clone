@@ -36,6 +36,9 @@ body {
 }
 
 /* ======= common classes ======  */
+.edit-mode{
+  display: block !important
+}
 .overlay {
   height: 100vh;
   width: 100vw;
