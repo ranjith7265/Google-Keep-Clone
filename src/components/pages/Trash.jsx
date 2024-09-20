@@ -14,7 +14,6 @@ function Trash() {
   setInterval(() => {
     deletedNotes.forEach((note) => dispatch(removeForever(note.id)));
   }, 604800000);
-  // 604800000 --- 7 days to milliseconds
 
   const handleDeleteForever = (id) => {
     Swal.fire({

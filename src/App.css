@@ -220,6 +220,7 @@ body {
   width: 25vw;
   height: 100%;
   transition: width 0.3s ease;
+  user-select: none;
 }
 .menu-hide {
   width: 4.9vw;
@@ -292,6 +293,7 @@ body {
   border-radius: 0.7rem;
   overflow: hidden;
   box-shadow: 4px 4px 10px #ccc;
+  user-select: none;
 }
 .note-dark {
   background-color: #7a7b7c;
