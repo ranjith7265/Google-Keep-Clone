@@ -36,8 +36,8 @@ body {
 }
 
 /* ======= common classes ======  */
-.edit-mode{
-  display: block !important
+.edit-mode {
+  display: block !important;
 }
 .overlay {
   height: 100vh;
@@ -353,7 +353,7 @@ body {
 /* === Notes List section starts ===  */
 
 .note-lists {
-  width: 80vw;
+  width: 100%;
   height: auto;
   display: flex;
   flex-wrap: wrap;
@@ -362,8 +362,9 @@ body {
 }
 .note-lists.full-layout {
   height: auto;
-  width: 55vw;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   flex-wrap: nowrap;
 }
 .note-list {
@@ -401,6 +402,7 @@ body {
   flex-direction: column;
   align-items: center;
   padding-top: 7rem;
+  user-select: none;
 }
 .no-list-items span {
   font-size: 1.3rem;
@@ -434,7 +436,7 @@ body {
 /* === Labels section starts ===  */
 #labels {
   display: flex;
-  margin-top: 7rem;
+  padding-top: 7rem;
   justify-content: center;
 }
 .create-label-container {
@@ -478,3 +480,47 @@ body {
 /* === Labels section ends ===  */
 
 /* ======== Main section ends ======  */
+
+/* Responsiveness  */
+
+@media screen and (max-width: 566px) {
+  .nav-search {
+    width: 100%;
+    margin: 0;
+  }
+  .side-menu {
+    width: 15vw;
+  }
+  .nav-menu {
+    pointer-events: none;
+    display: none;
+  }
+  .take-note-container {
+    width: 90%;
+  }
+  .trash-nav {
+    flex-direction: column;
+  }
+  .trash-nav span {
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+  }
+  .layout-icon{
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .menu-hide {
+    width: 8vw;
+  }
+  .take-note {
+    width: 35rem;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .menu-hide {
+    width: 6.5vw;
+  }
+}
