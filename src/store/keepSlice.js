@@ -68,42 +68,28 @@ const keepSlice = createSlice({
       state.theme = !state.theme;
     },
     updateCardColor: (state, action) => {
-      const {id , color} = action.payload
+      const { id, color } = action.payload;
       state.notes = state.notes.map((note) =>
-        note.id === id
-          ? { ...note, color: color }
-          : note
+        note.id === id ? { ...note, color: color } : note
       );
     },
     addTime: (state, action) => {
-      const {id, time} = action.payload
+      const { id, time } = action.payload;
       state.notes = state.notes.map((note) =>
-        note.id === id
-          ? { ...note, time: time }
-          : note
+        note.id === id ? { ...note, time: time } : note
       );
     },
     createLabel: (state, action) => {
       state.labels.push(action.payload);
     },
     setLabel: (state, action) => {
-      const {id, label} = action.payload 
+      const { id, label } = action.payload;
       state.notes = state.notes.map((note) =>
-        note.id === id
-          ? { ...note, label: label }
-          : note
+        note.id === id ? { ...note, label: label } : note
       );
     },
     deleteLabel: (state, action) => {
       state.labels.pop(action.payload);
-    },
-    imgUrl: (state, action) => {
-      const {id, imgUrl} = action.state
-      state.notes = state.notes.map((note) =>
-        note.id === id
-          ? { ...note, imgUrl: imgUrl }
-          : note
-      );
     },
     updateDrag: (state, action) => {
       const pinned = state.notes.filter((note) => note.isPinned === true);
@@ -116,9 +102,9 @@ const keepSlice = createSlice({
     editState: (state) => {
       state.edit = !state.edit;
     },
-    getEditNote: (state, action) =>{
-      state.editNote = action.payload
-    }
+    getEditNote: (state, action) => {
+      state.editNote = action.payload;
+    },
   },
 });
 
@@ -134,12 +120,11 @@ export const {
   createLabel,
   setLabel,
   deleteLabel,
-  imgUrl,
   updateDrag,
   updatePinnedDrag,
   updateNote,
   editState,
-  getEditNote
+  getEditNote,
 } = keepSlice.actions;
 
 export default keepSlice.reducer;

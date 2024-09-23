@@ -11,7 +11,6 @@ import {
   archiveNote,
   updateCardColor,
   setLabel,
-  imgUrl,
   editState,
   getEditNote,
 } from "../../../store/keepSlice";
@@ -25,9 +24,6 @@ function NoteItem({ note, index, onDragStart, DragEnd }) {
   const labels = useSelector((state) => state.labels);
 
   const handleFileUpload = (e) => {
-    dispatch(
-      imgUrl({ id: note.id, imgUrl: URL.createObjectURL(e.target.files[0]) })
-    );
     setFile(URL.createObjectURL(e.target.files[0]));
   };
 
@@ -57,7 +53,7 @@ function NoteItem({ note, index, onDragStart, DragEnd }) {
     >
       <img
         className="card-img-top"
-        src={note.imgUrl}
+        src={file}
         style={{ display: `${file ? "block" : "none"}` }}
       ></img>
       <div className="card-body" onClick={() => handleCardClick(note)}>
