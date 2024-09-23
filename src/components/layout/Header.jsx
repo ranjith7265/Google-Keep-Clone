@@ -44,7 +44,7 @@ function Header({ onMenuClick, getSearchValue }) {
         />
       </div>
       <div className="nav-option">
-        <div onClick={() => dispatch(toggleLayout())}>
+        <div className="layout-icon" onClick={() => dispatch(toggleLayout())}>
           {layout ? (
             <TfiLayoutAccordionSeparated
               style={{ fontSize: 22, marginLeft: 15 }}
