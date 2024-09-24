@@ -73,11 +73,11 @@ function NoteItem({ note, index, onDragStart, DragEnd }) {
       <span className="image-upload">
         <input
           type="file"
-          id={note.title}
+          id={note.id}
           style={{ display: "none" }}
           onChange={handleFileUpload}
         />
-        <label htmlFor={note.title} style={{ cursor: "pointer" }}>
+        <label htmlFor={note.id} style={{ cursor: "pointer" }}>
           <CiImageOn />
         </label>
       </span>
