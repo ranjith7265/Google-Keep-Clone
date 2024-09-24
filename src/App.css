@@ -351,11 +351,14 @@ body {
 /* === Notes section ends ===  */
 
 /* === Notes List section starts ===  */
-
+.note-lists-container{
+  width: 100%;
+}
 .note-lists {
   width: 100%;
   height: auto;
   display: flex;
+  justify-content: flex-start;
   flex-wrap: wrap;
   animation: scroll 0.3s ease;
   padding-top: 1rem;
