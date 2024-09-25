@@ -1,8 +1,9 @@
-# React + Vite
+Key Features:-
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🗂️ Note Management: Create, edit, delete, archive, and restore notes
+🔖 Tagging & Organization:Organize notes with labels, switch between grid and list layouts and auto-clear trash after 7 days
+🎨 Customizable UI: Light/dark themes, drag to reposition notes
+📱 Responsive Design: Fully responsive design for all devices
+🖼️ Images: Attach images to your notes
+🔍 Search: Search notes easily
+💾 Data Persistence: Data persistence with local storage using Redux Persist
