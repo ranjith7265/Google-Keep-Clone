@@ -54,13 +54,13 @@ function Header({ onMenuClick, getSearchValue }) {
           )}
         </div>
         <IoSettingsOutline style={{ fontSize: 23, marginLeft: 20 }} />
-        <button onClick={() => dispatch(toggleTheme())}>
+        <div onClick={() => dispatch(toggleTheme())}>
           {theme ? (
             <IoSunnyOutline style={{ fontSize: 25 }} />
           ) : (
             <RiMoonClearLine style={{ fontSize: 25 }} />
           )}
-        </button>
+        </div>
       </div>
     </nav>
   );

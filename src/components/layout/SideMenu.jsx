@@ -26,7 +26,7 @@ function SideMenu({ showMenu }) {
           draggable="false"
         >
           <li className="side-menu-link">
-            <img src={notesIcon} alt="notes"></img>
+            <img src={notesIcon} alt="notes-icon"></img>
             <span>Notes</span>
           </li>
         </NavLink>
@@ -36,7 +36,7 @@ function SideMenu({ showMenu }) {
           draggable="false"
         >
           <li className="side-menu-link">
-            <img src={reminderIcon} alt="reminder"></img>
+            <img src={reminderIcon} alt="reminder-icon"></img>
             <span>Reminder</span>
           </li>
         </NavLink>
@@ -47,7 +47,7 @@ function SideMenu({ showMenu }) {
           draggable="false"
         >
           <li className="side-menu-link">
-            <img src={labelsIcon} alt="labels"></img>
+            <img src={labelsIcon} alt="labels-icon"></img>
             <span>Labels</span>
           </li>
         </NavLink>
@@ -76,7 +76,7 @@ function SideMenu({ showMenu }) {
           draggable="false"
         >
           <li className="side-menu-link">
-            <img src={ArchiveIcon} alt="archive"></img>
+            <img src={ArchiveIcon} alt="archive-icon"></img>
             <span>Archive</span>
           </li>
         </NavLink>
@@ -86,7 +86,7 @@ function SideMenu({ showMenu }) {
           draggable="false"
         >
           <li className="side-menu-link">
-            <img src={TrashIcon} alt="trash"></img>
+            <img src={TrashIcon} alt="trash-icon"></img>
             <span>Trash</span>
           </li>
         </NavLink>
