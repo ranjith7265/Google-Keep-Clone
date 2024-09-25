@@ -25,20 +25,20 @@ function SideMenu({ showMenu }) {
           to="/"
           draggable="false"
         >
-          <li className="side-menu-link">
+          <div className="side-menu-link">
             <img src={notesIcon} alt="notes-icon"></img>
             <span>Notes</span>
-          </li>
+          </div>
         </NavLink>
         <NavLink
           className={`${theme ? "link-light" : "link-dark"}`}
           to="/reminder"
           draggable="false"
         >
-          <li className="side-menu-link">
+          <div className="side-menu-link">
             <img src={reminderIcon} alt="reminder-icon"></img>
             <span>Reminder</span>
-          </li>
+          </div>
         </NavLink>
 
         <NavLink
@@ -46,10 +46,10 @@ function SideMenu({ showMenu }) {
           to="/labels"
           draggable="false"
         >
-          <li className="side-menu-link">
+          <div className="side-menu-link">
             <img src={labelsIcon} alt="labels-icon"></img>
             <span>Labels</span>
-          </li>
+          </div>
         </NavLink>
         {labels.length > 0 &&
           labels.map((label) => (
@@ -59,7 +59,7 @@ function SideMenu({ showMenu }) {
               to={`/labels/${label.toLowerCase()}`}
               draggable="false"
             >
-              <li className="side-menu-link">
+              <div className="side-menu-link">
                 <button
                   className="label-delete"
                   onClick={() => dispatch(deleteLabel(label))}
@@ -67,7 +67,7 @@ function SideMenu({ showMenu }) {
                   <MdDelete />
                 </button>
                 <span>{label}</span>
-              </li>
+              </div>
             </NavLink>
           ))}
         <NavLink
@@ -75,20 +75,20 @@ function SideMenu({ showMenu }) {
           to="/archive"
           draggable="false"
         >
-          <li className="side-menu-link">
+          <div className="side-menu-link">
             <img src={ArchiveIcon} alt="archive-icon"></img>
             <span>Archive</span>
-          </li>
+          </div>
         </NavLink>
         <NavLink
           className={`${theme ? "link-light" : "link-dark"}`}
           to="/trash"
           draggable="false"
         >
-          <li className="side-menu-link">
+          <div className="side-menu-link">
             <img src={TrashIcon} alt="trash-icon"></img>
             <span>Trash</span>
-          </li>
+          </div>
         </NavLink>
       </div>
     </aside>

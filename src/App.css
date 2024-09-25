@@ -199,7 +199,7 @@ body {
   justify-content: flex-end;
   margin-right: 2rem;
 }
-.nav-option button {
+.nav-option .theme-icon {
   margin-left: 1rem;
 }
 /* ======== Nav-bar section ends ======  */
@@ -351,7 +351,7 @@ body {
 /* === Notes section ends ===  */
 
 /* === Notes List section starts ===  */
-.note-lists-container{
+.note-lists-container {
   width: 100%;
 }
 .note-lists {
@@ -508,7 +508,7 @@ body {
     font-size: 1rem;
     margin-bottom: 0.3rem;
   }
-  .layout-icon{
+  .layout-icon {
     display: none;
   }
 }

@@ -54,7 +54,7 @@ function Header({ onMenuClick, getSearchValue }) {
           )}
         </div>
         <IoSettingsOutline style={{ fontSize: 23, marginLeft: 20 }} />
-        <div onClick={() => dispatch(toggleTheme())}>
+        <div className="theme-icon" onClick={() => dispatch(toggleTheme())}>
           {theme ? (
             <IoSunnyOutline style={{ fontSize: 25 }} />
           ) : (
