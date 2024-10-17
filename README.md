@@ -11,7 +11,7 @@ A feature-rich note-taking web application built with React and Redux Toolkit. T
 - **🔍 Search:** Search notes easily.
 - **💾 Data Persistence:** Data persistence with local storage using Redux Persist.
 
-- ## Live Demo
+## Live Demo
 Check out the live version of the app deployed on Vercel:  
 [Live Demo on Vercel](https://google-keep-clone-git-main-ranjith7265s-projects.vercel.app/)
 
