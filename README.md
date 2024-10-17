@@ -28,12 +28,15 @@ Check out the live version of the app deployed on Vercel:
    git clone https://github.com/ranjith7265/Google-Keep-Clone.git
 
 2. Navigate into the project directory:
+   ```bash
    cd notes-manager
    
-4. Install dependencies:
+3. Install dependencies:
+   ```bash
    npm install
 
-5. Start the development server:
+4. Start the development server:
+   ```bash
    npm run dev
 
 ## Usage
