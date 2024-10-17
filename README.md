@@ -29,7 +29,7 @@ Check out the live version of the app deployed on Vercel:
 
 2. Navigate into the project directory:
    ```bash
-   cd notes-manager
+   cd google-keep-clone
    
 3. Install dependencies:
    ```bash
