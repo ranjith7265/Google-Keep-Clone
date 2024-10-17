@@ -1,15 +1,16 @@
-Key Features:-
+# Key Features:-
 
-==> 🗂️ Note Management: Create, edit, delete, archive, and restore notes
 
-==> 🔖 Tagging & Organization:Organize notes with labels, switch between grid and list layouts and auto-clear trash after 7 days
+🗂️ Note Management: Create, edit, delete, archive, and restore notes
 
-==> 🎨 Customizable UI: Light/dark themes, drag to reposition notes
+🔖 Tagging & Organization:Organize notes with labels, switch between grid and list layouts and auto-clear trash after 7 days
 
-==> 📱 Responsive Design: Fully responsive design for all devices
+🎨 Customizable UI: Light/dark themes, drag to reposition notes
 
-==> 🖼️ Images: Attach images to your notes
+📱 Responsive Design: Fully responsive design for all devices
 
-==> 🔍 Search: Search notes easily
+🖼️ Images: Attach images to your notes
 
-==> 💾 Data Persistence: Data persistence with local storage using Redux Persist
+🔍 Search: Search notes easily
+
+💾 Data Persistence: Data persistence with local storage using Redux Persist
